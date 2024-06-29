@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="signUpForm" style="display: none;">
+        <h1 class="form-title">Register</h1>
+        <form action="register.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="fname" id="fname" placeholder="Firstname" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="lname" id="lname" placeholder="Lastname" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <input type="submit" class="btn" value="Sign Up" name="signUp">
+        </form>
+        <p class="or">---------or----------</p>
+        <div class="icons">
+            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-square-x-twitter"></i>
+        </div>
+        <div class="links">
+            <p>Already have an account?</p>
+            <button id="signInButton">Sign In</button>
+        </div>
+    </div>
+
+    <div class="container" id="signInForm">
+        <h1 class="form-title">Sign In</h1>
+        <form id="signInForm" action="register.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="loginEmail" placeholder="Email" required >
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <p class="recover">
+                <a href="#" id="recoverPasswordLink">Forgot Password</a>
+            </p>
+            <input type="submit" class="btn" value="Sign In" name="signIn">
+        </form>
+        <p class="or">---------or----------</p>
+        <div class="icons">
+            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-square-x-twitter"></i>
+        </div>
+        <div class="links">
+            <p>Don't have an account yet?</p>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+    </div>
+
+    <div class="container" id="recoverForm" style="display: none;">
+        <h1 class="form-title">Recover Password</h1>
+        <form action="recover.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="recoverEmail" placeholder="Enter your email" required>
+            </div>
+            <input type="submit" class="btn" value="Recover" name="recover">
+            <button class="back" id="backToSignIn">Back to Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUpButton');
+        const signInButton = document.getElementById('signInButton');
+        const signInform = document.getElementById('signInForm');
+        const signUpform = document.getElementById('signUpForm');
+        const recoverPasswordLink = document.getElementById('recoverPasswordLink');
+        const recoverForm = document.getElementById('recoverForm');
+        const backToSignIn = document.getElementById('backToSignIn');
+
+        signUpButton.addEventListener('click', function() {
+            signInform.style.display = 'none';
+            signUpform.style.display = 'block';
+        });
+
+        signInButton.addEventListener('click', function() {
+            signInform.style.display = 'block';
+            signUpform.style.display = 'none';
+        });
+
+        recoverPasswordLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            signInform.style.display = 'none';
+            recoverForm.style.display = 'block';
+        });
+
+        backToSignIn.addEventListener('click', function() {
+            recoverForm.style.display = 'none';
+            signInform.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
